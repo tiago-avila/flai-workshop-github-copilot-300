@@ -23,11 +23,20 @@
           </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
+            <button id="manage-announcements-button" class="hidden">📢 Manage Announcements</button>
             <button id="logout-button">Logout</button>
           </div>
         </div>
       </div>
     </header>
+
+    <!-- Announcement Banner -->
+    <div id="announcement-banner" class="announcement-banner hidden">
+      <div class="announcement-content">
+        <span class="announcement-icon">📢</span>
+        <span id="announcement-text"></span>
+      </div>
+    </div>
 
     <main>
       <section id="activities-container">
@@ -134,9 +143,49 @@
       </div>
     </div>
 
+    <!-- Announcement Management Modal -->
+    <div id="announcement-modal" class="modal hidden">
+      <div class="modal-content announcement-modal-content">
+        <span class="close-announcement-modal">&times;</span>
+        <h3>Manage Announcements</h3>
+        
+        <!-- Announcement Form -->
+        <div class="announcement-form-container">
+          <form id="announcement-form">
+            <div class="form-group">
+              <label for="announcement-message">Message:</label>
+              <textarea id="announcement-message" required placeholder="Enter announcement message" rows="3"></textarea>
+            </div>
+            <div class="form-group-row">
+              <div class="form-group">
+                <label for="announcement-start-date">Start Date (optional):</label>
+                <input type="datetime-local" id="announcement-start-date" />
+              </div>
+              <div class="form-group">
+                <label for="announcement-expiration-date">Expiration Date (required):</label>
+                <input type="datetime-local" id="announcement-expiration-date" required />
+              </div>
+            </div>
+            <input type="hidden" id="announcement-id" value="" />
+            <div class="form-actions">
+              <button type="submit" id="save-announcement-button">Create Announcement</button>
+              <button type="button" id="cancel-edit-button" class="hidden secondary-button">Cancel Edit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Announcements List -->
+        <div class="announcements-list-container">
+          <h4>All Announcements</h4>
+          <div id="announcements-management-list">
+            <p>Loading announcements...</p>
+          </div>
+        </div>
+        
+        <div id="announcement-message" class="hidden message"></div>
+      </div>
+    </div>
+
     <script src="app.js"></script>
   </body>
-  <div class="announcement-banner">
-  📢 Activity registration is open until the end of the month. Don't lose your spot!
-  </div>
 </html>
